@@ -1,1 +1,1 @@
-# Exercises
+# Exercises For Intro To Programming Class
