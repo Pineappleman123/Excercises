@@ -8,6 +8,7 @@ Using the two blocks of code below, create a window that creates a folder, and c
 from pathlib import Path
 import os
 print(Path.cwd())
+# changes directory to github folder
 os.chdir('C:/githubstuff')
 
 # using tkinter to create a usable window
@@ -22,21 +23,28 @@ win.geometry("750x250")
 
 #Define a function to show a message
 def myclick():
+    # displayes message with chosen folder name
     message= "Your Folder " + entry.get()
     label= Label(frame, text= message, font= ('Times New Roman', 14, 'italic'))
+    # make directory with entry.get() as the folder name
     os.makedirs('C:/githubstuff/' + entry.get())
+    # switches the directory to the created one
     os.chdir('C:/githubstuff/' + entry.get())
     entry.delete(0, 'end')
     label.pack(pady=30)
     
+    # displayes message with chosen file name
     message1= "Your File " + entry1.get()
     label= Label(frame, text= message1, font= ('Times New Roman', 14, 'italic'))
+    # makes a file with the inputted name and appends the .txt extention to it
     p = Path(entry1.get() + '.txt')
     entry1.delete(0, 'end')
     label.pack(pady=30)
     
+    # displayes message with chosen content
     message2= "Your Content " + entry2.get()
     label= Label(frame, text= message2, font= ('Times New Roman', 14, 'italic'))
+    # writes the inputted content in
     p.write_text(str(entry2.get()))
     p.read_text()
     entry2.delete(0, 'end')
@@ -51,6 +59,7 @@ frame.pack()
 frame.pack_propagate(False)
 
 #Create an Entry widget in the Frame
+# duplicated for different entries
 entry = ttk.Entry(frame, width= 40)
 entry.insert(INSERT, "Enter Your Folder Name")
 entry.pack()
